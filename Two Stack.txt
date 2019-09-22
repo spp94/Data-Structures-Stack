@@ -1,0 +1,85 @@
+public class TwoStack {
+	private int[] items;
+	private int max1 = 4, max2 = 6;
+	private int top1 = 0, top2 = 4;
+	
+	public TwoStack(){
+		items = new int[max1+max2];
+	}
+	
+	public void push1(int value){
+		if(top1 == max1){
+			System.out.println("Stack1 Overflow Error");
+		}
+		else{
+			items[top1++] = value;
+		}
+	}
+	
+	public void push2(int value){
+		if(top2 == (max1+max2)){
+			System.out.println("Stack2 Overflow Error");
+		}
+		else{
+			items[top2++] = value;
+		}
+	}
+	
+	public void pop1(){
+		if(top1 == 0){
+			System.out.println("Stack1 Underflow Error");
+		}
+		else{
+			top1--;
+		}
+	}
+	
+	public void pop2(){
+		if(top2 == 4){
+			System.out.println("Stack2 Underflow Error");
+		}
+		else{
+			top2--;
+		}
+	}
+	
+	public boolean isEmpty1(){
+		return top1 == 0;
+	}
+	
+	public boolean isEmpty2(){
+		return top2 == 4;
+	}
+	
+	public boolean isFull1(){
+		return top1 == max1;
+	}
+	
+	public boolean isFull2(){
+		return top2 == (max1+max2);
+	}
+	
+	public void printA(){
+		for(int i = 0; i < top1; i++){
+			System.out.print(items[i]+" ");
+		}
+		System.out.println();
+	}
+	
+	public void printB(){
+		for(int i = 4; i < top2; i++){
+			System.out.print(items[i]+" ");
+		}
+		System.out.println();
+	}
+	
+	public void print(){
+		for(int i = 0; i < items.length; i++){
+			System.out.print(items[i]+" ");
+		}
+		System.out.println();
+		System.out.println(top1+" "+top2);
+		System.out.println(max1+" "+max2);
+	}
+	
+}
