@@ -1,0 +1,99 @@
+public class Stacks {
+	private class Node{
+		private int value;
+		private Node next;
+		private Node(int value){
+			this.value = value;
+		}
+	}
+	private Node first, last;
+	private int max = 5, size = 0;
+	
+	public void push(int value){
+		if(size == max){
+			System.out.println("Stack Overflow Error");
+		}
+		else{
+			Node node = new Node(value);
+			if(first == null){
+				first = last = node;
+			}
+			else if(first == last){
+				first.next = node;
+				last = node;
+			}
+			else{
+				last.next = node;
+				last = node;
+			}
+			size++;
+		}
+	}
+	
+	private Node getPreviousNode(Node node){
+		Node current = first;
+		while(current.next != null){
+			if(current.next.value == node.value){
+				return current;
+			}
+			else{
+				current = current.next;
+			}
+		}
+		return null;
+	}
+	
+	public void pop(){
+		if(size == 0){
+			System.out.println("Stack Underflow Exception");
+		}
+		else{
+			Node node = getPreviousNode(last);
+			if(node == null){
+				first = last = null;
+			}
+			else{
+				node.next = null;
+				last = node;
+			}
+			size--;
+		}
+	}
+	
+	public int size(){
+		return size;
+	}
+	
+	public int min(){
+		int minValue = Integer.MAX_VALUE;
+		Node current = first;
+		while(current != null){
+			if(minValue > current.value){
+				minValue = current.value;
+			}
+			current = current.next;
+		}
+		return minValue;
+	}
+	
+	public int max(){
+		int maxValue = Integer.MIN_VALUE;
+		Node current = first;
+		while(current != null){
+			if(maxValue < current.value){
+				maxValue = current.value;
+			}
+			current = current.next;
+		}
+		return maxValue;
+	}
+	
+	public void print(){
+		Node current = first;
+		while(current != null){
+			System.out.print(current.value+" ");
+			current = current.next;
+		}
+		System.out.println();
+	}
+}
