@@ -1,0 +1,6 @@
+ public void pop(){
+	 if(top == 0)
+		 throw new EmptyStackException();
+	 
+	 top--;
+ }
