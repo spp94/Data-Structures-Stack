@@ -1,0 +1,6 @@
+public int peek(){
+	 if(top > 0 && top <= items.length)
+		 return items[top-1];
+	 
+	 throw new EmptyStackException();
+ }
