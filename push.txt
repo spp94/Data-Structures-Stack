@@ -1,0 +1,6 @@
+public void push(int value){
+	 if(top == items.length)
+		 throw new StackOverflowError();
+	
+     items[top++] = value;
+ }
